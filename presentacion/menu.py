@@ -1,15 +1,14 @@
 import sys
-from datos import nombre_app, version_app
+from datos import nombre_app, version_app, main_menu
 
 def menu_principal():
     print(f'{nombre_app} - {version_app}')
     print('='*len(nombre_app) + '='*len(version_app))
 
 while True:
-    print('[1] Gestionar Productos')
-    print('[2] Gestionar Clientes')
-    print('[3] Gestionar Proveedores')
-    print('[4] Salir')
+    for (clave, valor) in main_menu.items():
+        print(f'[{clave}] {valor}')
+
     opcion_usuario = input('Seleccione una opción [1-4]: ')
 
     if opcion_usuario == '1':
