@@ -1,5 +1,6 @@
-from datos.models import BaseModel
 from peewee import AutoField, CharField
+
+from datos.models import BaseModel
 
 
 class Proveedor(BaseModel):

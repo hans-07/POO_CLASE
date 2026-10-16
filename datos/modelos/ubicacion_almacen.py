@@ -14,5 +14,4 @@ class UbicacionAlmacen(BaseModel):
         table_name = 'ubicacion_almacenes'
 
     def consultar_capacidad_disponible(self):
-        """Devuelve la capacidad disponible considerando el stock actual y mínimo."""
         return max(self.stock_actual - self.stock_minimo, 0)

@@ -1,13 +1,13 @@
-from datos.conexion import BaseModel
-from peewee import AutoField, BooleanField, CharField, DateTimeField, DecimalField
+from peewee import AutoField, BooleanField, CharField
+
+from datos.models import BaseModel
 
 
-
-class Almacenes(BaseModel):
-    direccion = CharField()
-    estado = BooleanField(constraints=[SQL("DEFAULT 1")])
+class Almacen(BaseModel):
     id_almacen = AutoField()
     nombre_almacen = CharField()
+    direccion = CharField()
+    estado = BooleanField(default=True)
 
     class Meta:
         table_name = 'almacenes'
