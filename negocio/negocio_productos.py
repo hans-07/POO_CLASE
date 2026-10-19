@@ -1,13 +1,27 @@
-from datos.repositorio.repositorio_productos import guardar_producto, listar_productos
+from decimal import Decimal
+
+from datos.repositorio.repositorio_productos import (
+    actualizar_producto,
+    eliminar_producto,
+    guardar_producto,
+    listar_productos,
+    producto_por_id,
+)
 
 
 def crear_producto(nombre, descripcion, precio_venta, categoria, proveedor_principal):
     from datos.modelos.producto import Producto
 
+    if not nombre or not nombre.strip():
+        raise ValueError('El nombre del producto es obligatorio.')
+
+    if precio_venta is None:
+        raise ValueError('El precio de venta es obligatorio.')
+
     producto = Producto(
-        nombre=nombre,
-        descripcion=descripcion,
-        precio_venta=precio_venta,
+        nombre=nombre.strip(),
+        descripcion=descripcion.strip() if descripcion else None,
+        precio_venta=Decimal(str(precio_venta)),
         categoria=categoria,
         proveedor_principal=proveedor_principal,
     )
@@ -18,16 +32,23 @@ def obtener_productos():
     return listar_productos()
 
 
-def crear_producto_demo():
-    from datos.modelos.producto import Producto
+def buscar_producto_por_id(id_producto):
+    return producto_por_id(id_producto)
 
-    producto = Producto.get_or_create(
-        nombre='Agua Mineral 1L',
-        defaults={
-            'descripcion': 'Botella de agua mineral sin gas',
-            'precio_venta': 1200,
-            'categoria': 1,
-            'proveedor_principal': 1,
-        }
+
+def editar_producto(id_producto, nombre=None, descripcion=None, precio_venta=None,
+                   categoria=None, proveedor_principal=None):
+    return actualizar_producto(
+        id_producto=id_producto,
+        nombre=nombre.strip() if nombre is not None else None,
+        descripcion=descripcion.strip() if descripcion is not None else None,
+        precio_venta=precio_venta,
+        categoria=categoria,
+        proveedor_principal=proveedor_principal,
     )
-    return producto
+
+
+def borrar_producto(id_producto):
+    return eliminar_producto(id_producto)
+
+

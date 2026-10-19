@@ -1,6 +1,0 @@
-CREATE USER 'pyme_user'@'localhost' IDENTIFIED BY 'Pyme_2026!Secure';
-GRANT ALL PRIVILEGES ON pyme_db.* TO 'pyme_user'@'localhost';
-FLUSH PRIVILEGES;
-
-GRANT ALL PRIVILEGES ON pyme_db.* TO 'pyme_user'@'localhost';
-FLUSH PRIVILEGES;
