@@ -98,3 +98,19 @@ CREATE TABLE salidas (
     CONSTRAINT pk_salidas PRIMARY KEY (id_salida),
     CONSTRAINT fk_salidas_movimientos FOREIGN KEY (id_movimiento) REFERENCES detalle_movimientos(id_movimiento)
 ) COMMENT = 'Salidas de mercadería';
+
+CREATE TABLE usuarios(
+    id_usuario INTEGER AUTO_INCREMENT,
+    rut VARCHAR(11) NULL,
+    nombre VARCHAR(25) NOT NULL,
+    apellido VARCHAR(25) NOT NULL,
+    correo VARCHAR(255) NOT NULL,
+    pais INTEGER NULL,
+    fecha_nacimiento DATE NULL,
+    genero INTEGER NOT NULL,
+    fecha_incorporacion DATE NOT NULL,
+    habilitado TINYINT NOT NULL DEFAULT 1,
+
+    CONSTRAINT pk_usuarios PRIMARY KEY (id_usuario),
+    -- CONSTRAINT fk_usuarios_paises FOREIGN KEY (pais) REFERENCES paises(id_pais)
+) COMMENT = 'Tabla de usuarios de sistema. Administradores de bibliotecas y lectores';
