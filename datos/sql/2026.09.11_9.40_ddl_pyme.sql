@@ -1,6 +1,18 @@
 CREATE DATABASE IF NOT EXISTS pyme_db;
 USE pyme_db;
 
+-- Tabla paises
+CREATE TABLE paises(
+    id_pais INTEGER AUTO_INCREMENT,
+    pais VARCHAR(50) NOT NULL,
+    nacionalidad VARCHAR(50) NULL,
+    iso2 CHAR(2) NOT NULL,
+    iso3 CHAR(3) NOT NULL,
+    habilitado TINYINT NOT NULL DEFAULT 1,
+
+    CONSTRAINT pk_paises PRIMARY KEY (id_pais)
+) COMMENT = 'Tabla de paises y nacionalidades para asociar a autor, editorial y personas';
+
 -- TABLA CATEGORIAS
 CREATE TABLE categorias (
     id_categoria INT AUTO_INCREMENT,
